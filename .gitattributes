@@ -2,3 +2,5 @@
 * text=auto
 *.h5 filter=lfs diff=lfs merge=lfs -text
 *.pyd filter=lfs diff=lfs merge=lfs -text
+Lib/site-packages/tensorflow/python/_pywrap_tensorflow_internal.pyd filter=lfs diff=lfs merge=lfs -text
+Lib/site-packages/jaxlib/xla_extension.pyd filter=lfs diff=lfs merge=lfs -text
