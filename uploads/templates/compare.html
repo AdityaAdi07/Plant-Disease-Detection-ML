@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Comparison - Team Vidyuth</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #065f46 0%, #0d9488 50%, #0369a1 100%);
+        }
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0f766e 0%, #0369a1 100%);
+            transform: translateY(-2px);
+        }
+        .comparison-block {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .comparison-block:hover {
+            transform: translateY(-5px);
+        }
+        .info-card {
+            background: linear-gradient(145deg, #f0fdfa, #e0f2fe);
+            border-left: 4px solid #0d9488;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <header class="bg-green-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6 flex flex-col items-center justify-center space-y-4">
+            <h1 class="text-4xl font-bold text-center">Krishaka Kavacham🌱 | Comparison Point</h1>
+            <p class="text-lg text-center text-green-100 max-w-2xl">Advanced comparison tools for plant disease analysis</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Comparison Options -->
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+            <div onclick="showComparisonForm('plant_name')" class="card comparison-block p-6 rounded-xl shadow-lg cursor-pointer">
+                <i class="fas fa-leaf text-4xl text-teal-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Compare by Plant Name</h3>
+                <p class="text-gray-600 mb-4">Search and compare disease data across different plants to identify patterns and trends.</p>
+                <div class="text-sm text-gray-500">
+                    • Track disease progression
+                    • Compare treatment effectiveness
+                    • Analyze susceptibility patterns
+                </div>
+            </div>
+
+            <div onclick="showComparisonForm('disease_name')" class="card comparison-block p-6 rounded-xl shadow-lg cursor-pointer">
+                <i class="fas fa-virus text-4xl text-red-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Compare by Disease Name</h3>
+                <p class="text-gray-600 mb-4">Analyze how specific diseases affect different plants and their treatment outcomes.</p>
+                <div class="text-sm text-gray-500">
+                    • Disease spread patterns
+                    • Cross-species impacts
+                    • Treatment success rates
+                </div>
+            </div>
+
+            <div onclick="showComparisonForm('lacking_trait')" class="card comparison-block p-6 rounded-xl shadow-lg cursor-pointer">
+                <i class="fas fa-flask text-4xl text-purple-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Compare by Lacking Trait</h3>
+                <p class="text-gray-600 mb-4">Identify nutritional deficiencies and their impact on plant health across species.</p>
+                <div class="text-sm text-gray-500">
+                    • Nutrient deficiency patterns
+                    • Treatment recommendations
+                    • Prevention strategies
+                </div>
+            </div>
+
+            <div onclick="showComparisonForm('date')" class="card comparison-block p-6 rounded-xl shadow-lg cursor-pointer">
+                <i class="fas fa-calendar-alt text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Compare by Date</h3>
+                <p class="text-gray-600 mb-4">Track disease progression and treatment effectiveness over time.</p>
+                <div class="text-sm text-gray-500">
+                    • Temporal analysis
+                    • Seasonal patterns
+                    • Long-term trends
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Comparison Form -->
+        <div id="comparisonForm" class="card p-8 rounded-xl shadow-2xl mb-12 hidden">
+            <form action="/compare" method="post" class="space-y-6">
+                <input type="hidden" id="comparison_type" name="comparison_type" value="">
+                <div id="search_term_group">
+                    <label class="block text-gray-700 text-lg font-semibold mb-2">Search Term</label>
+                    <input type="text" name="search_term" 
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
+                           placeholder="Enter search term...">
+                </div>
+                <div id="plant_name_group" class="hidden">
+                    <label class="block text-gray-700 text-lg font-semibold mb-2">Plant Name</label>
+                    <input type="text" name="plant_name" 
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
+                           placeholder="Enter plant name...">
+                </div>
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg text-lg font-semibold">
+                    <i class="fas fa-search mr-2"></i>Compare Now
+                </button>
+            </form>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="info-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-chart-line text-4xl text-teal-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Data-Driven Insights</h3>
+                <p class="text-gray-700">Our comparison tools provide valuable insights for:</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• Early disease detection</li>
+                    <li>• Treatment optimization</li>
+                    <li>• Resource allocation</li>
+                    <li>• Crop yield improvement</li>
+                </ul>
+            </div>
+
+            <div class="info-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Preventive Measures</h3>
+                <p class="text-gray-700">Compare and identify:</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• Disease susceptibility patterns</li>
+                    <li>• Environmental risk factors</li>
+                    <li>• Effective prevention strategies</li>
+                    <li>• Best farming practices</li>
+                </ul>
+            </div>
+
+            <div class="info-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-tasks text-4xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Treatment Tracking</h3>
+                <p class="text-gray-700">Monitor and analyze:</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• Treatment effectiveness</li>
+                    <li>• Recovery patterns</li>
+                    <li>• Cost efficiency</li>
+                    <li>• Long-term outcomes</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showComparisonForm(type) {
+            const form = document.getElementById('comparisonForm');
+            const typeInput = document.getElementById('comparison_type');
+            const searchTermGroup = document.getElementById('search_term_group');
+            const plantNameGroup = document.getElementById('plant_name_group');
+            
+            form.classList.remove('hidden');
+            typeInput.value = type;
+            
+            if (type === 'date') {
+                searchTermGroup.classList.add('hidden');
+                plantNameGroup.classList.remove('hidden');
+            } else {
+                searchTermGroup.classList.remove('hidden');
+                plantNameGroup.classList.add('hidden');
+            }
+            
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

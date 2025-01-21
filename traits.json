@@ -1,0 +1,338 @@
+{
+    "Apple": {
+        "diseases": [
+            {
+                "name": "__Apple_scab",
+                "lacking_trait": "Calcium",
+                "symptoms": [
+                    "Dark, sunken lesions on leaves",
+                    "Lesions on fruit and stems"
+                ],
+                "treatment": "Apply fungicides and remove infected leaves"
+            },
+            {
+                "name": "__Black_rot",
+                "lacking_trait": "Potassium",
+                "symptoms": [
+                    "Rotting of fruit",
+                    "Blackened leaves and stems"
+                ],
+                "treatment": "Remove infected fruit, apply fungicides"
+            },
+            {
+                "name": "__Cedar_apple_rust",
+                "lacking_trait": "Iron",
+                "symptoms": [
+                    "Yellow spots on leaves",
+                    "Rusty orange spores"
+                ],
+                "treatment": "Apply fungicides and remove fallen leaves"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Blueberry": {
+        "diseases": [
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Cherry": {
+        "diseases": [
+            {
+                "name": "(including_sour)___Powdery_mildew",
+                "lacking_trait": "Sulfur",
+                "symptoms": [
+                    "White powdery spots on leaves",
+                    "Deformed leaves and fruit"
+                ],
+                "treatment": "Apply sulfur-based fungicides"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Corn": {
+        "diseases": [
+            {
+                "name": "(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Grayish-brown spots on leaves",
+                    "Yellow halo around the spots"
+                ],
+                "treatment": "Apply magnesium sulfate and improve air circulation"
+            },
+            {
+                "name": "(maize)___Common_rust_",
+                "lacking_trait": "Phosphorus",
+                "symptoms": [
+                    "Rust-colored pustules on leaves",
+                    "Deformed leaves"
+                ],
+                "treatment": "Apply fungicides and rotate crops"
+            },
+            {
+                "name": "(maize)___Northern_Leaf_Blight",
+                "lacking_trait": "Potassium",
+                "symptoms": [
+                    "Large lesions on leaves",
+                    "Yellowing around lesions"
+                ],
+                "treatment": "Apply fungicides and remove infected leaves"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Grape": {
+        "diseases": [
+            {
+                "name": "__Black_rot",
+                "lacking_trait": "Calcium",
+                "symptoms": [
+                    "Rotting fruit",
+                    "Dark lesions on leaves"
+                ],
+                "treatment": "Apply fungicides and remove infected fruit"
+            },
+            {
+                "name": "__Esca_(Black_Measles)",
+                "lacking_trait": "Potassium",
+                "symptoms": [
+                    "V-shaped lesions on leaves",
+                    "Decay in fruit and wood"
+                ],
+                "treatment": "Remove infected wood, apply copper-based fungicides"
+            },
+            {
+                "name": "__Leaf_blight_(Isariopsis_Leaf_Spot)",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Brown, necrotic lesions on leaves",
+                    "Yellowing of leaves"
+                ],
+                "treatment": "Apply magnesium sulfate and improve air circulation"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Orange": {
+        "diseases": [
+            {
+                "name": "__Haunglongbing_(Citrus_greening)",
+                "lacking_trait": "Iron",
+                "symptoms": [
+                    "Yellowing of leaves",
+                    "Deformed fruit"
+                ],
+                "treatment": "Apply iron supplements and remove infected trees"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Peach": {
+        "diseases": [
+            {
+                "name": "__Bacterial_spot",
+                "lacking_trait": "Calcium and Nitrogen",
+                "symptoms": [
+                    "Small brown spots on leaves",
+                    "Spots turn black or fall out",
+                    "Fruit develops deep cracks",
+                    "Defoliation"
+                ],
+                "treatment": "Apply copper-based bactericides every 7-10 days during wet periods. Maintain good air circulation and prune infected branches."
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Pepper": {
+        "diseases": [
+            {
+                "name": "bell___Bacterial_spot",
+                "lacking_trait": "Calcium",
+                "symptoms": [
+                    "Water-soaked spots on leaves",
+                    "Yellowing of leaves",
+                    "Defoliation"
+                ],
+                "treatment": "Apply copper-based bactericides and improve air circulation"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Potato": {
+        "diseases": [
+            {
+                "name": "__Early_blight",
+                "lacking_trait": "Nitrogen",
+                "symptoms": [
+                    "Dark brown lesions with concentric rings",
+                    "Yellowing of lower leaves"
+                ],
+                "treatment": "Apply nitrogen fertilizers and remove infected plant debris"
+            },
+            {
+                "name": "__Late_blight",
+                "lacking_trait": "Phosphorus",
+                "symptoms": [
+                    "Water-soaked lesions on leaves",
+                    "White fungal growth on undersides of leaves"
+                ],
+                "treatment": "Apply phosphorus fertilizers and fungicides"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Raspberry": {
+        "diseases": [
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Soybean": {
+        "diseases": [
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Squash": {
+        "diseases": [
+            {
+                "name": "__Powdery_mildew",
+                "lacking_trait": "Sulfur",
+                "symptoms": [
+                    "White powdery spots on leaves",
+                    "Deformed leaves"
+                ],
+                "treatment": "Apply sulfur-based fungicides"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Strawberry": {
+        "diseases": [
+            {
+                "name": "__Leaf_scorch",
+                "lacking_trait": "Potassium",
+                "symptoms": [
+                    "Yellowing of leaf edges",
+                    "Brown tips on leaves"
+                ],
+                "treatment": "Apply potassium-based fertilizers"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    },
+    "Tomato": {
+        "diseases": [
+            {
+                "name": "__Leaf_Mold",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Yellow leaves",
+                    "Brown spots",
+                    "Leaf curling"
+                ],
+                "treatment": "Apply magnesium sulfate spray and improve air circulation"
+            },
+            {
+                "name": "__Bacterial_spot",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Yellow leaves",
+                    "Brown spots",
+                    "Leaf curling"
+                ],
+                "treatment": "Apply magnesium sulfate spray and improve air circulation"
+            },
+            {
+                "name": "__Late_blight",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Yellow leaves",
+                    "Brown spots",
+                    "Leaf curling"
+                ],
+                "treatment": "Apply magnesium sulfate spray and improve air circulation"
+            },
+            {
+                "name": "__Early_blight",
+                "lacking_trait": "Magnesium",
+                "symptoms": [
+                    "Yellow leaves",
+                    "Brown spots",
+                    "Leaf curling"
+                ],
+                "treatment": "Apply magnesium sulfate spray and improve air circulation"
+            },
+            {
+                "name": "__healthy",
+                "lacking_trait": "none",
+                "symptoms": [],
+                "treatment": "Continue regular maintenance"
+            }
+        ]
+    }
+}

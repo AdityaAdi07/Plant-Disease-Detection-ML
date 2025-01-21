@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishaka Kavacham🌱 - Plant Disease Detection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #065f46 0%, #0d9488 50%, #0369a1 100%);
+        }
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        .upload-zone {
+            border: 3px dashed #0d9488;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            transition: all 0.3s ease;
+        }
+        .upload-zone:hover {
+            border-color: #0891b2;
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0f766e 0%, #0369a1 100%);
+            transform: translateY(-2px);
+        }
+        .fact-card {
+            background: linear-gradient(145deg, #f0fdfa, #e0f2fe);
+            border-left: 4px solid #0d9488;
+        }
+        .stats-card {
+            background: linear-gradient(145deg, #ecfdf5, #f0f9ff);
+            border-bottom: 4px solid #0891b2;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <header class="bg-green-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6 flex flex-col items-center justify-center space-y-4">
+            <img src="rv.png" alt="RVCE" class="h-20 rounded-full shadow-xl">
+            <h1 class="text-4xl font-bold text-center">Plant Disease Detector</h1>
+            <p class="text-lg text-center text-green-100 max-w-2xl">Advanced AI-powered plant disease detection system with real-time analysis and treatment recommendations</p>
+            <div class="flex space-x-4">
+                <button onclick="loadModel()" class="btn-primary px-6 py-3 rounded-lg shadow-lg flex items-center">
+                    <i class="fas fa-brain mr-2"></i>Load Model
+                </button>
+                <button onclick="loadClassIndices()" class="btn-primary px-6 py-3 rounded-lg shadow-lg flex items-center">
+                    <i class="fas fa-layer-group mr-2"></i>Load Indices
+                </button>
+                
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="fact-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-robot text-4xl text-teal-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">AI Accuracy</h3>
+                <p class="text-gray-700">95% accuracy in detecting common plant diseases</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• Real-time analysis</li>
+                    <li>• Machine learning powered</li>
+                    <li>• Continuous improvement</li>
+                </ul>
+            </div>
+            <div class="fact-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-leaf text-4xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Early Detection Benefits</h3>
+                <p class="text-gray-700">Detect diseases before visible symptoms appear</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• Save up to 80% of crops</li>
+                    <li>• Reduce pesticide usage</li>
+                    <li>• Optimize treatment timing</li>
+                </ul>
+            </div>
+            <div class="fact-card p-6 rounded-xl shadow-lg">
+                <i class="fas fa-check-double text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">GMP Standards</h3>
+                <p class="text-gray-700">Following Good Manufacturing Practices</p>
+                <ul class="mt-2 text-sm text-gray-600">
+                    <li>• ISO 9001 certified</li>
+                    <li>• Regular calibration</li>
+                    <li>• Quality assurance</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4 mb-12">
+            <div class="stats-card p-4 rounded-lg text-center">
+                <h4 class="text-3xl font-bold text-teal-600">500+</h4>
+                <p class="text-gray-600">Disease Types</p>
+            </div>
+            <div class="stats-card p-4 rounded-lg text-center">
+                <h4 class="text-3xl font-bold text-teal-600">98%</h4>
+                <p class="text-gray-600">Detection Rate</p>
+            </div>
+            <div class="stats-card p-4 rounded-lg text-center">
+                <h4 class="text-3xl font-bold text-teal-600">2.5s</h4>
+                <p class="text-gray-600">Analysis Time</p>
+            </div>
+            <div class="stats-card p-4 rounded-lg text-center">
+                <h4 class="text-3xl font-bold text-teal-600">50K+</h4>
+                <p class="text-gray-600">Plants Scanned</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="card p-8 rounded-xl shadow-2xl">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Upload Plant Image</h2>
+                <div class="upload-zone rounded-xl p-8 text-center">
+                    <input type="file" id="imageInput" accept="image/*" class="hidden">
+                    <label for="imageInput" class="cursor-pointer block">
+                        <i class="fas fa-cloud-upload-alt text-6xl text-green-700 mb-4"></i>
+                        <p class="text-lg text-gray-600 mb-2">Drag and drop your image here</p>
+                        <p class="text-sm text-gray-500">or click to browse</p>
+                    </label>
+                    <div id="imagePreview" class="mt-6 hidden">
+                        <img id="preview" class="max-w-full h-auto mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+                <button onclick="diagnose()" class="w-full mt-6 btn-primary text-white py-3 rounded-lg text-lg font-semibold shadow-lg">
+                    <i class="fas fa-microscope mr-2"></i>Diagnose Now
+                </button>
+            </div>
+
+            <div id="resultSection" class="card p-8 rounded-xl shadow-2xl hidden">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Diagnosis Results</h2>
+                <div id="result" class="space-y-4"></div>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <button onclick="runPythonFile()" class="btn-primary text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+                        <i class="fas fa-file-pdf mr-2"></i>Download Report
+                    </button>
+                    <button onclick="showComparison()" class="btn-primary text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+                        <i class="fas fa-chart-bar mr-2"></i>View Analysis
+                    </button>
+                    <button onclick="feedback()" class="btn-primary text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+                        <i class="fas fa-chart-bar mr-2"></i>Give Feedback
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="comparisonSection" class="card p-8 rounded-xl shadow-2xl mt-8 hidden">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Historical Analysis</h2>
+            <div id="comparisonResults" class="grid grid-cols-3 gap-6"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+            <div class="card p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4 text-center text-gray-800">Why Choose Us?</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        Real-time disease detection and analysis
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        Comprehensive treatment recommendations
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        Regular model updates for better accuracy
+                    </li>
+                </ul>
+            </div>
+            <div class="card p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4 text-center text-gray-800">Latest Technologies</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-microchip text-blue-500 mr-2"></i>
+                        Advanced CNN architecture
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-microchip text-blue-500 mr-2"></i>
+                        Multi-spectral imaging analysis
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-microchip text-blue-500 mr-2"></i>
+                        Cloud-based processing
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="loading-overlay hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white p-6 rounded-lg shadow-xl">
+                <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
+                <p class="mt-2">Processing...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        // Image preview functionality
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('imagePreview').classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        async function runPythonFile() {
+            try {
+                // Send a POST request to the Flask server
+                const response = await fetch('/run_python', { method: 'POST' });
+                const data = await response.json();
+
+                // Display success or error message
+                if (data.success) {
+                    alert('Python file executed successfully: ' + data.message);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                alert('An error occurred: ' + error.message);
+            }
+        }
+        function showComparison() {
+            window.location.href = "http://127.0.0.1:5000";
+        }
+        function feedback() {
+            window.location.href = "http://127.0.0.1:5050";
+        }
+
+
+        async function loadModel() {
+            try {
+                const response = await fetch('/load_model', { method: 'POST' });
+                const data = await response.json();
+                showNotification(data.message, 'success');
+            } catch (error) {
+                showNotification('Error loading model', 'error');
+            }
+        }
+
+        async function loadClassIndices() {
+            try {
+                const response = await fetch('/load_class_indices', { method: 'POST' });
+                const data = await response.json();
+                showNotification(data.message, 'success');
+            } catch (error) {
+                showNotification('Error loading indices', 'error');
+            }
+        }
+
+    async function diagnose() {
+    const fileInput = document.getElementById('imageInput');
+    if (!fileInput.files.length) {
+        showNotification('Please select an image first', 'warning');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', fileInput.files[0]);
+
+    try {
+        // Show loading state
+        const diagnoseButton = document.querySelector('button[onclick="diagnose()"]');
+        diagnoseButton.disabled = true;
+        diagnoseButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        const response = await fetch('/process_image', { 
+            method: 'POST', 
+            body: formData 
+        });
+
+        // Log the raw response
+        console.log('Raw response:', response);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Log the parsed data
+        console.log('Parsed data:', data);
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        displayResults(data);
+        showNotification('Diagnosis completed successfully', 'success');
+    } catch (error) {
+        console.error('Error during diagnosis:', error);
+        showNotification(`Error: ${error.message}`, 'error');
+    } finally {
+        // Reset button state
+        const diagnoseButton = document.querySelector('button[onclick="diagnose()"]');
+        diagnoseButton.disabled = false;
+        diagnoseButton.innerHTML = '<i class="fas fa-microscope"></i> Diagnose Now';
+    }
+}
+
+function displayResults(data) {
+    console.log("Displaying results:", data);  // Debug log
+    const resultDiv = document.getElementById('result');
+    const diagnosisData = data.data;
+
+    resultDiv.innerHTML = `
+        <div class="space-y-4">
+            <div class="bg-white p-4 rounded-lg shadow">
+                <h3 class="text-lg font-semibold mb-3">Basic Information</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="font-medium">Plant Name:</div>
+                    <div>${diagnosisData.plant_name || 'N/A'}</div>
+                    
+                    <div class="font-medium">Disease Percentage:</div>
+                    <div>${diagnosisData.disease_percentage || 0}%</div>
+                    
+                    <div class="font-medium">Status:</div>
+                    <div class="${diagnosisData.status === 'Healthy' ? 'text-green-600' : 'text-red-600'} font-semibold">
+                        ${diagnosisData.status || 'Unknown'}
+                    </div>
+                    
+                    <div class="font-medium">Confidence Score:</div>
+                    <div>${diagnosisData.confidence_score ? (diagnosisData.confidence_score * 100).toFixed(2) : 0}%</div>
+                </div>
+            </div>
+
+            ${diagnosisData.disease_details ? `
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-3">Disease Details</h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="font-medium">Lacking Trait:</div>
+                        <div>${diagnosisData.disease_details.lacking_trait || 'N/A'}</div>
+                        
+                        ${diagnosisData.disease_details.symptoms ? `
+                            <div class="font-medium">Symptoms:</div>
+                            <div>${diagnosisData.disease_details.symptoms.join(', ') || 'N/A'}</div>
+                        ` : ''}
+                        
+                        <div class="font-medium">Treatment:</div>
+                        <div>${diagnosisData.disease_details.treatment || 'N/A'}</div>
+                    </div>
+                </div>
+            ` : ''}
+
+            <div class="bg-white p-4 rounded-lg shadow">
+                <div class="font-medium">Diagnosis Time:</div>
+                <div>${new Date(diagnosisData.timestamp).toLocaleString()}</div>
+            </div>
+        </div>`;
+
+    document.getElementById('resultSection').classList.remove('hidden');
+}
+
+
+
+async function downloadPDF() {
+    try {
+        // Get the diagnosis ID from the current result
+        const diagnosisId = document.querySelector('[data-diagnosis-id]')?.dataset.diagnosisId;
+        if (!diagnosisId) {
+            throw new Error('No diagnosis ID found');
+        }
+
+        const response = await fetch(`/download_report/${diagnosisId}`);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `plant-diagnosis-${diagnosisId}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        showNotification('Error downloading PDF', 'error');
+    }
+}
+
+function showLoading(show = true) {
+    const loader = document.querySelector('.loading-overlay');
+    if (show) {
+        loader.classList.remove('hidden');
+    } else {
+        loader.classList.add('hidden');
+    }
+}
+
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification fixed top-4 right-4 p-4 rounded-lg shadow-lg ${
+        type === 'success' ? 'bg-green-500' :
+        type === 'error' ? 'bg-red-500' :
+        'bg-yellow-500'
+    } text-white`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+    </script>
+</body>
+</html>
