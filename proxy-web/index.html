@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishaka Kavacham🌱 - Plant Disease Detection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="enhanced_styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/d2/R.V._College_of_Engineering_logo.png" alt="Logo" class="logo-img">
+                <br><br>
+                <h1>Plant Disease Detector</h1>
+            </div>
+            <p class="tagline">Advanced AI-powered plant disease detection system with real-time analysis and treatment recommendations</p>
+            <div class="action-buttons">
+                <button id="loadModelBtn" class="btn btn-primary">
+                    <i class="fas fa-brain"></i>Load Model
+                </button>
+                <button id="loadIndicesBtn" class="btn btn-primary">
+                    <i class="fas fa-layer-group"></i>Load Indices
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="info-cards">
+            <div class="card fact-card">
+                <i class="fas fa-robot icon-large"></i>
+                <h3>AI Accuracy</h3>
+                <p>95% accuracy in detecting common plant diseases</p>
+                <ul class="feature-list">
+                    <li>Real-time analysis</li>
+                    <li>Machine learning powered</li>
+                    <li>Continuous improvement</li>
+                </ul>
+            </div>
+            <div class="card fact-card">
+                <i class="fas fa-leaf icon-large"></i>
+                <h3>Early Detection Benefits</h3>
+                <p>Detect diseases before visible symptoms appear</p>
+                <ul class="feature-list">
+                    <li>Save up to 80% of crops</li>
+                    <li>Reduce pesticide usage</li>
+                    <li>Optimize treatment timing</li>
+                </ul>
+            </div>
+            <div class="card fact-card">
+                <i class="fas fa-check-double icon-large"></i>
+                <h3>GMP Standards</h3>
+                <p>Following Good Manufacturing Practices</p>
+                <ul class="feature-list">
+                    <li>ISO 9001 certified</li>
+                    <li>Regular calibration</li>
+                    <li>Quality assurance</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-card">
+                <h4 class="stat-number" data-count="500">500+</h4>
+                <p>Disease Types</p>
+            </div>
+            <div class="stats-card">
+                <h4 class="stat-number" data-count="98">98%</h4>
+                <p>Detection Rate</p>
+            </div>
+            <div class="stats-card">
+                <h4 class="stat-number" data-count="2.5">2.5s</h4>
+                <p>Analysis Time</p>
+            </div>
+            <div class="stats-card">
+                <h4 class="stat-number" data-count="50000">50K+</h4>
+                <p>Plants Scanned</p>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <div class="card upload-card">
+                <h2>Upload Plant Image</h2>
+                <div class="upload-zone" id="dropZone">
+                    <input type="file" id="imageInput" accept="image/*" class="hidden-input">
+                    <label for="imageInput" class="upload-label">
+                        <i class="fas fa-cloud-upload-alt icon-xl"></i>
+                        <p class="upload-text">Drag and drop your image here</p>
+                        <p class="upload-subtext">or click to browse</p>
+                    </label>
+                    <div id="imagePreview" class="image-preview hidden">
+                        <img id="preview" class="preview-img">
+                    </div>
+                </div>
+                <button id="diagnoseBtn" class="btn btn-primary btn-full">
+                    <i class="fas fa-microscope"></i>Diagnose Now
+                </button>
+            </div>
+
+            <div id="resultSection" class="card result-card hidden">
+                <h2>Diagnosis Results</h2>
+                <div id="result" class="result-content"></div>
+                <div class="action-buttons">
+                    <button id="downloadReportBtn" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i>Download Report
+                    </button>
+                    <button id="viewAnalysisBtn" class="btn btn-primary">
+                        <i class="fas fa-chart-bar"></i>View Analysis
+                    </button>
+                    <button id="feedbackBtn" class="btn btn-primary">
+                        <i class="fas fa-comment"></i>Give Feedback
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparisonSection" class="card comparison-section hidden">
+            <h2>Historical Analysis</h2>
+            <div id="comparisonResults" class="comparison-grid"></div>
+        </section>
+
+        <section class="features-section">
+            <div class="card feature-card">
+                <h3>Why Choose Us?</h3>
+                <ul class="check-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Real-time disease detection and analysis
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Comprehensive treatment recommendations
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Regular model updates for better accuracy
+                    </li>
+                </ul>
+            </div>
+            <div class="card feature-card">
+                <h3>Latest Technologies</h3>
+                <ul class="tech-list">
+                    <li>
+                        <i class="fas fa-microchip"></i>
+                        Advanced CNN architecture
+                    </li>
+                    <li>
+                        <i class="fas fa-microchip"></i>
+                        Multi-spectral imaging analysis
+                    </li>
+                    <li>
+                        <i class="fas fa-microchip"></i>
+                        Cloud-based processing
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Krishaka Kavacham</span>
+                    <p>Protecting plants with AI technology</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Plant Database</a></li>
+                            <li><a href="#">Disease Library</a></li>
+                            <li><a href="#">Treatment Guide</a></li>
+                            <li><a href="#">Research Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> info@krishakakavacham.com</li>
+                            <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Krishaka Kavacham. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="enhanced_script.js"></script>
+</body>
+</html>
