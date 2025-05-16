@@ -4,7 +4,7 @@ Display-Website Link: https://krishaka-kavacham.netlify.app/
 
 Krishaka Kavacham is an advanced web application that uses artificial intelligence to detect and diagnose plant diseases from leaf images. The system provides treatment recommendations and tracks disease history.
 
-![PlantDoctor](static/plant-doctor-banner.png)
+
 
 ## Features
 
